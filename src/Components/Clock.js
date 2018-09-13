@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import { compose, mapProps, setPropTypes } from 'recompose'
 import PropTypes from 'prop-types'
 
+function ClockTheme ({ countdown }) {
+  const minute = parseInt(countdown / 60, 10)
+  const second = countdown % 60
+  return (
+    <div>
+      { minute } : { second }
+    </div>
+  )
+}
+
 class Clock extends Component {
   constructor (props) {
     super(props) 
@@ -46,11 +56,7 @@ class Clock extends Component {
   }
 
   render () {
-    return (
-      <div>
-        { this.state.countdown } 
-      </div>
-    )
+    return <ClockTheme countdown={this.state.countdown} />
   }
 }
 
